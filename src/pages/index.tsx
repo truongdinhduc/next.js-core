@@ -2,10 +2,27 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { RootState } from '@/redux/store'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const dispatch = useDispatch()
+
+  const triggerAnAction = () => {
+    dispatch({type: 'exampleAction', payload: {}})
+  }
+
+  const triggerASaga = () => {
+    dispatch({type: 'exampleSagaAction', payload: {}})
+  }
+
+  const callAnAPI = () => {
+    dispatch({type: 'exampleCallAnAPIAction', payload: 'Example payload'})
+  }
+
   return (
     <>
       <Head>
@@ -60,62 +77,32 @@ export default function Home() {
         </div>
 
         <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <div className={styles.card} onClick={triggerAnAction}>
             <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
+              Reducer <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
+              Trigger an action.
             </p>
-          </a>
+          </div>
 
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
+          <div className={styles.card}>
+            <h2 className={inter.className} onClick={triggerASaga}>
+              Saga <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
+              Trigger a saga action.
             </p>
-          </a>
+          </div>
 
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
+          <div className={styles.card}>
+            <h2 className={inter.className} onClick={callAnAPI}>
+              Call an API <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
+              Call an API action.
             </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
+          </div>
         </div>
       </main>
     </>
