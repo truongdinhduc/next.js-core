@@ -6,7 +6,12 @@ const customizedCreateReducer = (reducerObject:ReducerType) => {
     return createReducer(
         initialState,
         (builder) => {
+            // normal actions
             for (let action of reducerObject.actions){
+                builder.addCase(createAction(action.type), action.reducer)
+            }
+            // call API actions
+            for (let action of reducerObject.APIs){
                 builder.addCase(createAction(action.type), action.reducer)
             }
         }

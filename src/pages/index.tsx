@@ -86,8 +86,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className={styles.card}>
-            <h2 className={inter.className} onClick={triggerASaga}>
+          <div className={styles.card} onClick={triggerASaga}>
+            <h2 className={inter.className}>
               Saga <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
@@ -95,8 +95,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className={styles.card}>
-            <h2 className={inter.className} onClick={callAnAPI}>
+          <div className={styles.card} onClick={callAnAPI}>
+            <h2 className={inter.className}>
               Call an API <span>-&gt;</span>
             </h2>
             <p className={inter.className}>

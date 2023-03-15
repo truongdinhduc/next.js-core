@@ -10,7 +10,14 @@ const ExampleReducer:ReducerType = {
             }
         }
     ],
-    APIs: []
+    APIs: [
+        {
+            type: 'exampleCallAPIAction',
+            reducer: (state, action) => {
+                console.log('Example call API action.')
+            }
+        }
+    ]
 }
 
 export default ExampleReducer

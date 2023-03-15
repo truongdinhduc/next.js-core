@@ -8,7 +8,7 @@ declare interface ActionType {
 declare interface ReducerType {
     initialState: any,
     actions: ActionType[],
-    APIs?: ActionType[]
+    APIs: ActionType[]
 }
 
 export {
